@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "vidz.EncodingService": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7009"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 33590,
+      "useSSL": false
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "vidz.UploadService": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7010"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 31457,
+      "useSSL": false
+    }
+  }
+}
