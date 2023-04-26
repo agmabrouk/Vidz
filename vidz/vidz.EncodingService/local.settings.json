@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=stvidz;AccountKey=2pwRVh7nONa/QR6O3IYFdEi3YGS7xaoatpCWDYrS8iAlLmPQT69WOZEqfVBJ4tYnhdx34GxtyS5N+AStBC4YrQ==;EndpointSuffix=core.windows.net",
+    "ContainerName": "file-upload", // Container name
+    "QueueName": "newvidz-queue",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "StorageAccountConnectionString": "DefaultEndpointsProtocol=https;AccountName=stvidz;AccountKey=2pwRVh7nONa/QR6O3IYFdEi3YGS7xaoatpCWDYrS8iAlLmPQT69WOZEqfVBJ4tYnhdx34GxtyS5N+AStBC4YrQ==;EndpointSuffix=core.windows.net"
+  }
+}
