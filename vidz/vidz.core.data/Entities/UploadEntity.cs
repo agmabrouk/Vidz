@@ -13,8 +13,8 @@ namespace vidz.core.data.Entities
     {
         public UploadEntity(string uploadId, string user)
         {
-            this.PartitionKey = User;
-            this.RowKey = UploadId;
+            this.PartitionKey = user;
+            this.RowKey = uploadId;
         }
 
         public UploadEntity() { }
