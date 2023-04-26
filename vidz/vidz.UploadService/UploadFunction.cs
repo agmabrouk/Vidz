@@ -15,6 +15,7 @@ using vidz.core.data.Entities;
 using System.Security.Cryptography;
 using Azure.Storage.Queues;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace vidz.UploadService
 {
@@ -95,20 +96,41 @@ namespace vidz.UploadService
             var tableClient = storageAccount.CreateCloudTableClient();
             CloudTable uploadsTable = tableClient.GetTableReference("uploads");
             await uploadsTable.CreateIfNotExistsAsync();
-            var uploadEntity = new UploadEntity(uploadId)
+            var uploadEntity = new UploadEntity(uploadId, clientPrincipalName)
             {
                 FileName = filename,
                 User = clientPrincipalName,
+                UploadId = uploadId,
                 UploadDate = DateTime.UtcNow,
                 DownloadUrl = downloadUrl,
                 UploadUrl = uploadUrl,
             };
 
+
+            //320 Resolution
+            uploadEntity.Resolution = "320";
             if (queueClient.Exists())
             {
-                queueClient.SendMessage(JsonConvert.SerializeObject(uploadEntity));
+                queueClient.SendMessage(Convert.ToBase64String(Encoding.GetEncoding("utf-8").GetBytes(JsonConvert.SerializeObject(uploadEntity))));
                 Console.WriteLine($"Message created: '{queueClient.Name}'");
             }
+
+            //480 Resolution
+            uploadEntity.Resolution = "480";
+            if (queueClient.Exists())
+            {
+                queueClient.SendMessage(Convert.ToBase64String(Encoding.GetEncoding("utf-8").GetBytes(JsonConvert.SerializeObject(uploadEntity))));
+                Console.WriteLine($"Message created: '{queueClient.Name}'");
+            }
+
+            //720 Resolution
+            uploadEntity.Resolution = "720";
+            if (queueClient.Exists())
+            {
+                queueClient.SendMessage(Convert.ToBase64String(Encoding.GetEncoding("utf-8").GetBytes(JsonConvert.SerializeObject(uploadEntity))));
+                Console.WriteLine($"Message created: '{queueClient.Name}'");
+            }
+
             await uploadsTable.ExecuteAsync(TableOperation.Insert(uploadEntity));
             //Return Video Download Details
             return new JsonResult(new

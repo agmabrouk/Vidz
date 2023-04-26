@@ -11,15 +11,17 @@ namespace vidz.core.data.Entities
     [Serializable]
     public class UploadEntity : TableEntity
     {
-        public UploadEntity(string uploadId)
+        public UploadEntity(string uploadId, string user)
         {
-            this.PartitionKey = "uploads";
-            this.RowKey = uploadId;
+            this.PartitionKey = User;
+            this.RowKey = UploadId;
         }
 
         public UploadEntity() { }
 
         public string? FileName { get; set; }
+
+        public string? UploadId { get; set; }
 
         public string? User { get; set; }
 
@@ -28,5 +30,7 @@ namespace vidz.core.data.Entities
         public string? DownloadUrl { get; set; }
 
         public string? UploadUrl { get; set; }
+
+        public string? Resolution { get; set; }
     }
 }
